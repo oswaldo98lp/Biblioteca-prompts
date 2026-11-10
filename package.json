@@ -1,0 +1,18 @@
+{
+  "name": "biblioteca-prompts-gemini",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Portal de apoyo para el taller de Estudiantes Embajadores de Google Gemini",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "firebase": "^11.0.2"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}

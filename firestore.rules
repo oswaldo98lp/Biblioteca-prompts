@@ -1,0 +1,27 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Función auxiliar: verifica que el usuario autenticado sea el único ADMIN_EMAIL autorizado.
+    //IMPORTANTE: Reemplaza 'oswaldo98lp@gmail.com' por tu correo admin si usas otro.
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email == 'oswaldo98lp@gmail.com';
+    }
+
+    // Configuración global del sitio (Inicio y Práctica de prueba)
+    match /settings/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Colecciones públicas con control de estado Borrador / Publicado
+    // Lectura pública únicamente si published == true (o para el administrador en cualquier estado)
+    match /{collectionName}/{docId} {
+      allow read: if (collectionName in ['prompts', 'links', 'files', 'blocks', 'partsCards', 'faqs'])
+                  && (resource.data.published == true || isAdmin());
+      allow create, update, delete: if isAdmin();
+    }
+  }
+}

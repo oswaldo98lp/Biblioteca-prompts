@@ -1,0 +1,11 @@
+Fecha,Categoría,Concepto,Monto_MXN,Método_Pago,Prioridad,Semestre
+2026-09-01,Transporte,Pasaje Autobús Universitario,450,Efectivo,Alta,2026-3
+2026-09-03,Material Académico,Licencia Cloud y Dominio Web,320,Tarjeta Débito,Alta,2026-3
+2026-09-05,Alimentación,Comedor Universitario Semanal,600,Efectivo,Alta,2026-3
+2026-09-10,Hardware,Sensores ESP32 y Cables Jumper,480,Transferencia,Media,2026-3
+2026-09-14,Suscripciones,Almacenamiento Google One,49,Tarjeta Débito,Baja,2026-3
+2026-09-18,Eventos,Congreso Nacional de Ingeniería,850,Transferencia,Media,2026-3
+2026-09-22,Alimentación,Cafetería y Snacks Estudio,280,Efectivo,Baja,2026-3
+2026-09-25,Transporte,Pasaje Autobús Universitario,450,Efectivo,Alta,2026-3
+2026-09-28,Material Académico,Impresión de Póster Científico,210,Efectivo,Alta,2026-3
+2026-10-02,Ingresos,Beca de Excelencia Académica,4500,Transferencia,Alta,2026-3

@@ -1,0 +1,11 @@
+ID_Estudiante,Nombre,Carrera,Cuatrimestre,Herramienta_Favorita,Horas_Ahorradas_Semana,Proyecto_Actual,Calificacion_Promedio
+EST-001,Ana Sofía Martínez,Ingeniería en Sistemas Computacionales,9,NotebookLM,6.5,Sistema de Detección de Plagas con IA,9.4
+EST-002,Carlos Eduardo Gómez,Ingeniería Electrónica,7,Gemini Canvas,5.0,Controlador IoT para Invernadero,8.9
+EST-003,Valeria Hernández,Licenciatura en Administración,5,Gemini Live,4.0,Plan Financiero para Startups Locales,9.2
+EST-004,Diego Alejandro Ruiz,Ingeniería en Sistemas Computacionales,9,Gemini Canvas,8.0,Dashboard Académico en Tiempo Real,9.6
+EST-005,Fernanda López,Ingeniería en Comercio Internacional,6,NotebookLM,5.5,Análisis de Tratados Comerciales LATAM,9.1
+EST-006,Jorge Luis Ramírez,Ingeniería Mecatrónica,8,Gemini Canvas,7.0,Simulador Cinemático de Brazo Robótico,8.8
+EST-007,Mariana Torres,Ingeniería en Sistemas Computacionales,9,NotebookLM,6.0,Asistente de Tutorías Universitarias,9.5
+EST-008,Roberto Sánchez,Licenciatura en Gestión Empresarial,4,Gemini Live,3.5,Simulación de Entrevistas Ejecutivas,8.7
+EST-009,Paulina Morales,Ingeniería en Tecnologías de Manufactura,7,Gemini Canvas,5.0,Optimización de Línea de Ensamble,9.0
+EST-010,Oswaldo Lucas,Ingeniería en Sistemas Computacionales,9,Gemini Canvas,9.0,Portal Estudiantes Embajadores Google Gemini,9.8

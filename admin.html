@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel de Administrador | Estudiantes Embajadores de Google Gemini</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/src/css/variables.css" />
+    <link rel="stylesheet" href="/src/css/components.css" />
+    <link rel="stylesheet" href="/src/css/admin.css" />
+  </head>
+  <body>
+    <div class="admin-shell">
+      <header class="admin-topbar">
+        <div class="admin-topbar__brand">
+          <img
+            src="/assets/Stickers/Gemini_Generated_Image_297rci297rci297r.png"
+            alt=""
+            width="34"
+            height="34"
+          />
+          <div>
+            <div class="admin-topbar__title">Panel de Administración · Taller Gemini</div>
+            <div style="font-size: 0.78rem; color: #BDC1C6;">
+              Gestión sin código de Prompts, Recursos, Metodología PARTS y Secciones
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+          <span id="admin-connection-badge" class="admin-mode-badge admin-mode-badge--local">
+            Cargando...
+          </span>
+          <a href="/" class="btn-pill-outline" style="background: rgba(255,255,255,0.1); color: #FFF; border-color: rgba(255,255,255,0.2);">
+            <span class="material-symbols-outlined" aria-hidden="true" style="font-size: 1.1rem">visibility</span>
+            <span>Ver Sitio Público</span>
+          </a>
+          <button
+            type="button"
+            id="admin-logout-btn"
+            class="btn-pill-outline"
+            hidden
+            style="background: rgba(234,67,53,0.18); color: #FFF; border-color: rgba(234,67,53,0.4);"
+          >
+            <span class="material-symbols-outlined" aria-hidden="true" style="font-size: 1.1rem">logout</span>
+            <span>Cerrar sesión</span>
+          </button>
+        </div>
+      </header>
+
+      <main id="admin-main-root" class="admin-container">
+        <!-- Se renderiza dinámicamente según estado de sesión (Login, Acceso Denegado o Dashboard CRUD) -->
+      </main>
+    </div>
+
+    <!-- Modal nativo <dialog> para Vista Previa antes de publicar -->
+    <dialog id="admin-preview-dialog" class="preview-dialog" aria-labelledby="preview-dialog-title">
+      <div class="preview-dialog__header">
+        <h2 id="preview-dialog-title" style="font-size: 1.05rem; font-weight: 700;">
+          Vista Previa del Elemento
+        </h2>
+        <button
+          type="button"
+          id="close-preview-dialog"
+          class="icon-btn"
+          style="background: transparent; color: #FFF; border-color: rgba(255,255,255,0.25);"
+          aria-label="Cerrar vista previa"
+        >
+          <span class="material-symbols-outlined" aria-hidden="true">close</span>
+        </button>
+      </div>
+      <div id="admin-preview-body" class="preview-dialog__body"></div>
+    </dialog>
+
+    <script type="module" src="/src/js/admin.js"></script>
+  </body>
+</html>
