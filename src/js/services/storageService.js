@@ -59,8 +59,8 @@ export async function uploadResourceFile(file) {
     }
   }
 
-  // Fallback para modo local / sin plan Blaze: DataURL (hasta ~2.5MB) o ObjectURL de sesión
-  if (file.size <= 2.5 * 1024 * 1024) {
+  // Fallback para modo sin Cloud Storage (plan gratuito Spark): DataURL hasta 700KB cabe dentro del límite de 1MB por documento de Firestore
+  if (file.size <= 700 * 1024) {
     const dataUrl = await new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = () => resolve(reader.result);
