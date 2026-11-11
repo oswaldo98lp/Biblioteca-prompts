@@ -9,12 +9,12 @@ import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || '',
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || '',
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || '',
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || '',
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || '',
-  appId: import.meta.env.VITE_FIREBASE_APP_ID || '',
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || 'AIzaSyD916GPJF0Yv7zGTjE-3ieCUPH6T0bkGts',
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || 'taller-gemini-uptex.firebaseapp.com',
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || 'taller-gemini-uptex',
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || 'taller-gemini-uptex.firebasestorage.app',
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || '716353516139',
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || '1:716353516139:web:1d7613287d889f6765772e',
 };
 
 // Correo del único administrador permitido (definido en variable de entorno VITE_ADMIN_EMAIL)
