@@ -5,7 +5,7 @@ service firebase.storage {
     function isAdmin() {
       return request.auth != null
         && request.auth.token.email_verified == true
-        && request.auth.token.email == 'oswaldo98lp@gmail.com';
+        && request.auth.token.email == 'oswaldo1998.lp@gmail.com';
     }
 
     // Archivos descargables del taller (.pdf, .xlsx, .csv) con límite de 10 MB

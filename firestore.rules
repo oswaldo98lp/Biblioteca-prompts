@@ -3,11 +3,11 @@ service cloud.firestore {
   match /databases/{database}/documents {
 
     // Función auxiliar: verifica que el usuario autenticado sea el único ADMIN_EMAIL autorizado.
-    //IMPORTANTE: Reemplaza 'oswaldo98lp@gmail.com' por tu correo admin si usas otro.
+    // IMPORTANTE: Reemplaza 'oswaldo1998.lp@gmail.com' por tu correo admin si usas otro.
     function isAdmin() {
       return request.auth != null
         && request.auth.token.email_verified == true
-        && request.auth.token.email == 'oswaldo98lp@gmail.com';
+        && request.auth.token.email == 'oswaldo1998.lp@gmail.com';
     }
 
     // Configuración global del sitio (Inicio y Práctica de prueba)

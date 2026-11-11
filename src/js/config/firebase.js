@@ -18,7 +18,7 @@ const firebaseConfig = {
 };
 
 // Correo del único administrador permitido (definido en variable de entorno VITE_ADMIN_EMAIL)
-export const ADMIN_EMAIL = (import.meta.env.VITE_ADMIN_EMAIL || 'oswaldo98lp@gmail.com').trim().toLowerCase();
+export const ADMIN_EMAIL = (import.meta.env.VITE_ADMIN_EMAIL || 'oswaldo1998.lp@gmail.com').trim().toLowerCase();
 
 export const isFirebaseConfigured = Boolean(
   firebaseConfig.apiKey &&
@@ -39,7 +39,10 @@ if (isFirebaseConfigured) {
     db = getFirestore(app);
     storage = getStorage(app);
     googleProvider = new GoogleAuthProvider();
-    googleProvider.setCustomParameters({ prompt: 'select_account' });
+    googleProvider.setCustomParameters({
+      prompt: 'select_account',
+      login_hint: ADMIN_EMAIL,
+    });
   } catch (err) {
     console.warn('No se pudo inicializar Firebase, usando almacenamiento local con datos seed:', err);
   }

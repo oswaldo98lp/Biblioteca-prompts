@@ -50,7 +50,7 @@ Permite a los estudiantes consultar la **Metodología PARTS**, copiar prompts co
    ```
 2. Abre el archivo `.env` y coloca tu correo de Google en `VITE_ADMIN_EMAIL` junto con las llaves de tu proyecto de Firebase:
    ```env
-   VITE_ADMIN_EMAIL=oswaldo98lp@gmail.com
+   VITE_ADMIN_EMAIL=oswaldo1998.lp@gmail.com
 
    VITE_FIREBASE_API_KEY=AIzaSyTuApiKeyAqui
    VITE_FIREBASE_AUTH_DOMAIN=tu-proyecto.firebaseapp.com
