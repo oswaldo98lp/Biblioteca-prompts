@@ -68,22 +68,42 @@ function mergeItemsById(seedArr = [], localArr = [], remoteArr = [], deletedIds 
  */
 function getLocalData() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const rawV3 = localStorage.getItem(STORAGE_KEY);
+    const rawV2 = localStorage.getItem('gemini_ambassador_portal_data_v2');
+    const rawV1 = localStorage.getItem('gemini_ambassador_portal_data_v1');
     const deletedIds = getDeletedIds();
-    if (!raw) {
+
+    if (!rawV3 && !rawV2 && !rawV1) {
       const initial = structuredClone(INITIAL_SEED_DATA);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(initial));
       return initial;
     }
-    const parsed = JSON.parse(raw);
+
+    const p3 = rawV3 ? JSON.parse(rawV3) : {};
+    const p2 = rawV2 ? JSON.parse(rawV2) : {};
+    const p1 = rawV1 ? JSON.parse(rawV1) : {};
+
+    const combineLocal = (col) =>
+      mergeItemsById(
+        INITIAL_SEED_DATA[col],
+        [...(p1[col] || []), ...(p2[col] || [])],
+        p3[col] || [],
+        deletedIds
+      );
+
     return {
-      siteSettings: { ...INITIAL_SEED_DATA.siteSettings, ...(parsed.siteSettings || {}) },
-      partsCards: mergeItemsById(INITIAL_SEED_DATA.partsCards, parsed.partsCards, [], deletedIds),
-      blocks: mergeItemsById(INITIAL_SEED_DATA.blocks, parsed.blocks, [], deletedIds),
-      prompts: mergeItemsById(INITIAL_SEED_DATA.prompts, parsed.prompts, [], deletedIds),
-      links: mergeItemsById(INITIAL_SEED_DATA.links, parsed.links, [], deletedIds),
-      files: mergeItemsById(INITIAL_SEED_DATA.files, parsed.files, [], deletedIds),
-      faqs: mergeItemsById(INITIAL_SEED_DATA.faqs, parsed.faqs, [], deletedIds),
+      siteSettings: {
+        ...INITIAL_SEED_DATA.siteSettings,
+        ...(p1.siteSettings || {}),
+        ...(p2.siteSettings || {}),
+        ...(p3.siteSettings || {}),
+      },
+      partsCards: combineLocal('partsCards'),
+      blocks: combineLocal('blocks'),
+      prompts: combineLocal('prompts'),
+      links: combineLocal('links'),
+      files: combineLocal('files'),
+      faqs: combineLocal('faqs'),
     };
   } catch (err) {
     console.warn('Error leyendo localStorage, usando seedData:', err);
@@ -169,6 +189,14 @@ export async function fetchAllPortalData({ includeDrafts = false } = {}) {
       };
 
       saveLocalData(merged);
+
+      // Si el administrador autenticado abre el panel, sincroniza automáticamente cualquier cambio local hacia Firestore
+      if (includeDrafts) {
+        syncAllToFirestoreBackground(merged, allDeleted).catch((e) =>
+          console.warn('No se pudo sincronizar automáticamente en segundo plano:', e.message)
+        );
+      }
+
       return filterByPublished(merged, includeDrafts);
     } catch (err) {
       console.warn('Usando datos locales / seed combinados:', err.message);
@@ -176,6 +204,21 @@ export async function fetchAllPortalData({ includeDrafts = false } = {}) {
   }
 
   return filterByPublished(local, includeDrafts);
+}
+
+async function syncAllToFirestoreBackground(mergedData, deletedIds) {
+  if (!isFirebaseConfigured || !db) return;
+  const batch = writeBatch(db);
+  batch.set(doc(db, 'settings', 'siteSettings'), mergedData.siteSettings, { merge: true });
+  batch.set(doc(db, 'settings', 'deletedMeta'), { ids: deletedIds }, { merge: true });
+
+  const collections = ['partsCards', 'blocks', 'prompts', 'links', 'files', 'faqs'];
+  for (const col of collections) {
+    for (const item of mergedData[col] || []) {
+      batch.set(doc(db, col, item.id), item, { merge: true });
+    }
+  }
+  await batch.commit();
 }
 
 function filterByPublished(data, includeDrafts) {
