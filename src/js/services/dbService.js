@@ -14,7 +14,7 @@ import {
 import { db, isFirebaseConfigured } from '../config/firebase.js';
 import { INITIAL_SEED_DATA } from '../data/seedData.js';
 
-const STORAGE_KEY = 'gemini_ambassador_portal_data_v1';
+const STORAGE_KEY = 'gemini_ambassador_portal_data_v2';
 
 /**
  * Obtiene el estado local almacenado en localStorage o inicializa con INITIAL_SEED_DATA

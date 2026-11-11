@@ -7,6 +7,7 @@ export const SECTIONS_META = [
   { id: 'inicio', label: 'Inicio', icon: 'home' },
   { id: 'practica', label: 'Práctica de prueba', icon: 'sports_esports' },
   { id: 'parts', label: 'Metodología PARTS', icon: 'extension' },
+  { id: 'apps-conectadas', label: 'Apps conectadas + Acciones (@)', icon: 'alternate_email' },
   { id: 'notebooklm', label: 'NotebookLM', icon: 'menu_book' },
   { id: 'canvas', label: 'Canvas', icon: 'dashboard_customize' },
   { id: 'canvas-db', label: 'Canvas + Base de datos', icon: 'database' },
@@ -126,8 +127,28 @@ export const INITIAL_SEED_DATA = {
     },
   ],
 
-  // Bloques de contenido por sección (Secciones 4 a 7 y bloques adicionales)
+  // Bloques de contenido por sección (Apps conectadas + Acciones programadas y Categorías 4 a 7)
   blocks: [
+    {
+      id: 'block-apps-1',
+      section: 'apps-conectadas',
+      title: 'El poder del símbolo @ (Arroba): Conecta tus Apps en segundos',
+      content:
+        'Escribir el símbolo @ dentro del cuadro de texto de Google Gemini (en el celular o en la web) despliega al instante el menú de Apps Conectadas.\n\nCon solo teclear @ puedes invocar a @Calendario de Google, @Google Keep, @Google Tasks, @Gmail, @Google Drive, @YouTube e incluso las apps nativas de tu teléfono como @Calendario de Samsung, @Samsung Notes y @Samsung Reminder.',
+      sticker: '/assets/Stickers/Gemini_Generated_Image_he49wkhe49wkhe49 (1).png',
+      order: 1,
+      published: true,
+    },
+    {
+      id: 'block-apps-2',
+      section: 'apps-conectadas',
+      title: 'Acciones Programadas + @: Automatiza tus rutinas y recordatorios',
+      content:
+        'Además de consultar o agendar en el momento con @, puedes combinar tus Apps Conectadas con Acciones Programadas en Gemini:\n\n1. Teclea @ y selecciona la app donde se ejecutará la acción (ej. @Calendario de Google, @Google Tasks o @Samsung Reminder).\n2. Indica el horario, frecuencia o disparador (ej. "Todos los días a las 7:30 AM..." o "Cada lunes a las 8:00 AM revisa mi @Calendario de Google y envíame mi resumen semanal").\n3. Gemini dejará programado el evento, recordatorio o acción recurrente automáticamente.',
+      sticker: '/assets/Stickers/Gemini_Generated_Image_685g9u685g9u685g.png',
+      order: 2,
+      published: true,
+    },
     {
       id: 'block-nb-1',
       section: 'notebooklm',
@@ -362,6 +383,38 @@ Escúchame y, cuando termine, hazme 2 preguntas clave sobre la viabilidad técni
       order: 9,
       published: true,
     },
+    {
+      id: 'prompt-10',
+      title: 'Automatización de Semana Universitaria con @ y Acciones Programadas',
+      category: 'apps-conectadas',
+      tags: ['Apps conectadas', 'Acciones programadas', '@', 'Calendario', 'Keep'],
+      recommendedFile: 'Escribe @ en Gemini para seleccionar tu Calendario y Apps de Notas',
+      promptText: `[IMPORTANTE: Escribe el símbolo @ para elegir cada app de la lista emergente antes de enviar]
+
+@Calendario de Google @Google Keep @Google Tasks (o @Calendario de Samsung @Samsung Notes @Samsung Reminder)
+
+Actúa como mi asistente ejecutivo universitario y ejecuta las siguientes acciones conectadas y programadas:
+
+1. [AGENDA]: Revisa mis eventos de esta semana en @Calendario de Google y programa 3 bloques de estudio de 90 minutos para la materia de [NOMBRE DE TU MATERIA] en mis tardes libres.
+2. [ACCIÓN PROGRAMADA / RECORDATORIO]: Programa en @Google Tasks (o @Samsung Reminder) una alerta recurrente todos los días a las 20:00 hrs llamada "Repaso de 20 min y revisión de pendientes del día siguiente".
+3. [NOTA ESTRUCTURADA]: Guarda en @Google Keep (o @Samsung Notes) una nota titulada "Checklist Entregables - [TU MATERIA]" con los 5 pasos críticos para terminar mi proyecto a tiempo.`,
+      order: 10,
+      published: true,
+    },
+    {
+      id: 'prompt-11',
+      title: 'Briefing Matutino Programado con @Calendario, @Gmail y @Tasks',
+      category: 'apps-conectadas',
+      tags: ['Acciones programadas', '@', 'Rutina Diaria', 'Productividad'],
+      recommendedFile: 'Usa @ para conectar Calendario, Gmail y Tasks',
+      promptText: `Programa una acción diaria todas las mañanas a las 7:30 AM donde consultes mis aplicaciones conectadas con @:
+
+1. Revisa mi @Calendario de Google (o @Calendario de Samsung) y dime qué clases, entregas o reuniones tengo hoy.
+2. Consulta mis tareas pendientes en @Google Tasks (o @Samsung Reminder) y ordénalas por prioridad usando la matriz de Eisenhower.
+3. Revisa en @Google Keep (o @Samsung Notes) mi nota de metas semanales y sugiéreme la tarea #1 en la que debo enfocarme hoy antes del mediodía.`,
+      order: 11,
+      published: true,
+    },
   ],
 
   // Enlaces útiles por categoría
@@ -373,6 +426,15 @@ Escúchame y, cuando termine, hazme 2 preguntas clave sobre la viabilidad técni
       description: 'Accede directamente a Google Gemini para ejecutar tus prompts, abrir Canvas y analizar archivos.',
       category: 'inicio',
       order: 1,
+      published: true,
+    },
+    {
+      id: 'link-apps',
+      title: 'Panel de Apps Conectadas y Extensiones de Gemini',
+      url: 'https://gemini.google.com/extensions',
+      description: 'Activa Google Workspace (Calendario, Keep, Tasks, Drive, Docs, Gmail) para invocarlos escribiendo @ en tus prompts.',
+      category: 'apps-conectadas',
+      order: 2,
       published: true,
     },
     {

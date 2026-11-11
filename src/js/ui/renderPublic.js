@@ -9,6 +9,7 @@ const CATEGORY_LABELS = {
   inicio: 'Inicio',
   practica: 'Práctica de prueba',
   parts: 'Metodología PARTS',
+  'apps-conectadas': 'Apps conectadas (@)',
   notebooklm: 'NotebookLM',
   canvas: 'Canvas',
   'canvas-db': 'Canvas + Base de datos',
@@ -247,6 +248,7 @@ export function renderActiveSection({
       bindCopyPromptButtons(container);
       break;
 
+    case 'apps-conectadas':
     case 'notebooklm':
     case 'canvas':
     case 'canvas-db':
@@ -377,12 +379,21 @@ function renderInicioSection(s, links) {
           <p class="module-card__desc">Persona, Acción, Resultado, Tono y Soporte: la anatomía del comando avanzado.</p>
         </button>
 
+        <button type="button" class="module-card" data-jump-section="apps-conectadas">
+          <div class="module-card__top">
+            <img src="/assets/Stickers/Gemini_Generated_Image_he49wkhe49wkhe49 (1).png" alt="" class="module-card__sticker" loading="lazy" width="54" height="54" />
+            <span class="material-symbols-outlined" aria-hidden="true" style="color:var(--google-blue)">arrow_forward</span>
+          </div>
+          <div class="module-card__title">3. Apps Conectadas (@)</div>
+          <p class="module-card__desc">Usa el comando @ para conectar Gemini con Google Calendar, Keep, Tasks, Drive y Samsung Notes.</p>
+        </button>
+
         <button type="button" class="module-card" data-jump-section="notebooklm">
           <div class="module-card__top">
             <img src="/assets/Stickers/Gemini_Generated_Image_941lkv941lkv941l.png" alt="" class="module-card__sticker" loading="lazy" width="54" height="54" />
             <span class="material-symbols-outlined" aria-hidden="true" style="color:var(--google-blue)">arrow_forward</span>
           </div>
-          <div class="module-card__title">3. NotebookLM</div>
+          <div class="module-card__title">4. NotebookLM</div>
           <p class="module-card__desc">Convierte tus PDFs y apuntes en guías de estudio, podcasts y exámenes con citas verificadas.</p>
         </button>
 
@@ -391,7 +402,7 @@ function renderInicioSection(s, links) {
             <img src="/assets/Stickers/Gemini_Generated_Image_ (8).png" alt="" class="module-card__sticker" loading="lazy" width="54" height="54" />
             <span class="material-symbols-outlined" aria-hidden="true" style="color:var(--google-blue)">arrow_forward</span>
           </div>
-          <div class="module-card__title">4. Gemini Canvas</div>
+          <div class="module-card__title">5. Gemini Canvas</div>
           <p class="module-card__desc">Crea aplicaciones web, simuladores interactivos y portafolios ejecutables en segundos.</p>
         </button>
 
@@ -400,7 +411,7 @@ function renderInicioSection(s, links) {
             <img src="/assets/Stickers/Gemini_Generated_Image_ (10).png" alt="" class="module-card__sticker" loading="lazy" width="54" height="54" />
             <span class="material-symbols-outlined" aria-hidden="true" style="color:var(--google-blue)">arrow_forward</span>
           </div>
-          <div class="module-card__title">5. Canvas + Base de Datos</div>
+          <div class="module-card__title">6. Canvas + Base de Datos</div>
           <p class="module-card__desc">Descarga archivos CSV/Excel y transfórmalos en Dashboards con gráficas y filtros dinámicos.</p>
         </button>
 
@@ -409,7 +420,7 @@ function renderInicioSection(s, links) {
             <img src="/assets/Stickers/Gemini_Generated_Image_ (75).png" alt="" class="module-card__sticker" loading="lazy" width="54" height="54" />
             <span class="material-symbols-outlined" aria-hidden="true" style="color:var(--google-blue)">arrow_forward</span>
           </div>
-          <div class="module-card__title">6. Gemini Live</div>
+          <div class="module-card__title">7. Gemini Live</div>
           <p class="module-card__desc">Practica entrevistas técnicas y defensas de proyecto por voz en tiempo real desde tu celular.</p>
         </button>
       </div>
@@ -584,6 +595,12 @@ function renderPartsSection(partsCards, prompts, files) {
 
 function renderCategoryWorkshopSection(sectionId, blocks, prompts, links, files) {
   const meta = {
+    'apps-conectadas': {
+      badge: 'Uso del Comando @ + Automatización',
+      title: 'APPS CONECTADAS + ACCIONES PROGRAMADAS (@)',
+      subtitle:
+        'Escribe el símbolo @ (arroba) en Google Gemini para invocar tus aplicaciones favoritas (Calendario, Keep, Tasks, Drive, Gmail, Samsung Notes y Reminder) y programar acciones o recordatorios automáticos.',
+    },
     notebooklm: {
       badge: 'Investigación y Estudio con IA',
       title: 'NOTEBOOKLM: TU CUADERNO DE INVESTIGACIÓN INTELIGENTE',
@@ -615,6 +632,59 @@ function renderCategoryWorkshopSection(sectionId, blocks, prompts, links, files)
   const secFiles = files.filter((f) => f.category === sectionId);
   const secLinks = links.filter((l) => l.category === sectionId);
 
+  const appsConectadasShowcaseHtml =
+    sectionId === 'apps-conectadas'
+      ? `
+      <div class="ambassador-showcase" style="margin-bottom:36px;background:linear-gradient(135deg,#0B0F17 0%,#161B26 100%);border:2px solid var(--google-blue);">
+        <div class="ambassador-showcase__header">
+          <span class="ambassador-showcase__badge">
+            <span class="material-symbols-outlined" aria-hidden="true" style="font-size:1.2rem">alternate_email</span>
+            GUÍA VISUAL DEL TALLER · COMANDO @ + ACCIONES PROGRAMADAS
+          </span>
+          <span style="font-size:0.82rem;color:#8AB4F8;font-weight:700;">Móvil y Web</span>
+        </div>
+        <div class="ambassador-showcase__body" style="grid-template-columns: 300px 1fr; gap: 36px; padding: 28px;">
+          <div style="display:flex;justify-content:center;">
+            <img
+              src="/assets/Stickers/apps-conectadas-arroba.jpg"
+              alt="Captura en celular mostrando cómo al escribir @ en Gemini aparecen Calendario de Google, Google Keep, Google Tasks, Samsung Notes y Samsung Reminder"
+              style="max-height:460px;width:auto;border-radius:20px;border:3px solid rgba(66,133,244,0.6);box-shadow:0 16px 36px rgba(0,0,0,0.45);"
+            />
+          </div>
+          <div class="ambassador-showcase__info">
+            <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(66,133,244,0.2);border:1px solid #4285F4;color:#FFFFFF;padding:8px 18px;border-radius:9999px;font-weight:800;font-size:1.1rem;margin-bottom:16px;">
+              <span style="font-size:1.4rem;color:#FBBC04;">@</span>
+              <span>Teclea @ + elige tu App + programa tu acción</span>
+            </div>
+            <h2 style="font-size:1.6rem;color:#FFFFFF;font-weight:800;margin-bottom:14px;line-height:1.25;">
+              Usa el símbolo <span style="color:#FBBC04;">@</span> para conectar tus Apps y crear <span style="color:#4285F4;">Acciones Programadas</span>
+            </h2>
+            <p style="color:#E8EAED;font-size:1rem;line-height:1.65;margin-bottom:16px;">
+              Como ves en la captura de pantalla desde el celular, basta con escribir el símbolo <strong style="color:#FBBC04;font-size:1.15rem;">@</strong> en la barra de Gemini para desplegar el menú emergente con tus aplicaciones y programar tareas o recordatorios:
+            </p>
+            <ul style="list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin-bottom:20px;">
+              <li style="background:rgba(255,255,255,0.07);padding:10px 14px;border-radius:12px;color:#FFF;font-size:0.9rem;">
+                📅 <strong>@Calendario de Google</strong> / <strong>@Calendario de Samsung</strong>
+              </li>
+              <li style="background:rgba(255,255,255,0.07);padding:10px 14px;border-radius:12px;color:#FFF;font-size:0.9rem;">
+                💡 <strong>@Google Keep</strong> / <strong>@Samsung Notes</strong>
+              </li>
+              <li style="background:rgba(255,255,255,0.07);padding:10px 14px;border-radius:12px;color:#FFF;font-size:0.9rem;">
+                ✅ <strong>@Google Tasks</strong> / <strong>@Samsung Reminder</strong>
+              </li>
+              <li style="background:rgba(255,255,255,0.07);padding:10px 14px;border-radius:12px;color:#FFF;font-size:0.9rem;">
+                ⏰ <strong>Acciones Programadas:</strong> Rutinas diarias o semanales con <code>@</code>
+              </li>
+            </ul>
+            <p style="color:#BDC1C6;font-size:0.92rem;">
+              <strong>Recuerda en el taller:</strong> Siempre escribe primero <code>@</code> para seleccionar la aplicación oficial de la lista flotante; así Gemini tiene permiso directo de crear el evento, nota o recordatorio programado.
+            </p>
+          </div>
+        </div>
+      </div>
+      `
+      : '';
+
   return `
     <section aria-labelledby="cat-heading-${sectionId}">
       <div class="section-header">
@@ -622,6 +692,8 @@ function renderCategoryWorkshopSection(sectionId, blocks, prompts, links, files)
         <h1 id="cat-heading-${sectionId}" class="section-title">${escapeHtml(meta.title)}</h1>
         <p class="section-subtitle">${escapeHtml(meta.subtitle)}</p>
       </div>
+
+      ${appsConectadasShowcaseHtml}
 
       ${
         secBlocks.length > 0
@@ -683,6 +755,7 @@ function renderBibliotecaSection(prompts, promptSearchState) {
   const categories = [
     { id: 'all', label: 'Todos' },
     { id: 'parts', label: 'Metodología PARTS' },
+    { id: 'apps-conectadas', label: 'Apps conectadas (@)' },
     { id: 'notebooklm', label: 'NotebookLM' },
     { id: 'canvas', label: 'Canvas' },
     { id: 'canvas-db', label: 'Canvas + Base de datos' },

@@ -267,6 +267,7 @@ function renderPromptsAdminTab(panel, state, onRefreshData) {
             <label for="p-category">Categoría / Sección *</label>
             <select id="p-category" required>
               <option value="parts" ${editing.category === 'parts' ? 'selected' : ''}>Metodología PARTS</option>
+              <option value="apps-conectadas" ${editing.category === 'apps-conectadas' ? 'selected' : ''}>Apps conectadas (@)</option>
               <option value="notebooklm" ${editing.category === 'notebooklm' ? 'selected' : ''}>NotebookLM</option>
               <option value="canvas" ${editing.category === 'canvas' ? 'selected' : ''}>Canvas</option>
               <option value="canvas-db" ${editing.category === 'canvas-db' ? 'selected' : ''}>Canvas + Base de datos</option>
@@ -919,10 +920,11 @@ function renderBlocksAdminTab(panel, state, onRefreshData) {
           <div class="form-field">
             <label for="b-sec">Sección destino *</label>
             <select id="b-sec" required>
-              <option value="notebooklm" ${editing.section === 'notebooklm' ? 'selected' : ''}>4. NotebookLM</option>
-              <option value="canvas" ${editing.section === 'canvas' ? 'selected' : ''}>5. Canvas</option>
-              <option value="canvas-db" ${editing.section === 'canvas-db' ? 'selected' : ''}>6. Canvas + Base de datos</option>
-              <option value="gemini-live" ${editing.section === 'gemini-live' ? 'selected' : ''}>7. Gemini Live</option>
+              <option value="apps-conectadas" ${editing.section === 'apps-conectadas' ? 'selected' : ''}>Apps conectadas (@)</option>
+              <option value="notebooklm" ${editing.section === 'notebooklm' ? 'selected' : ''}>NotebookLM</option>
+              <option value="canvas" ${editing.section === 'canvas' ? 'selected' : ''}>Canvas</option>
+              <option value="canvas-db" ${editing.section === 'canvas-db' ? 'selected' : ''}>Canvas + Base de datos</option>
+              <option value="gemini-live" ${editing.section === 'gemini-live' ? 'selected' : ''}>Gemini Live</option>
             </select>
           </div>
           <div class="form-field">
